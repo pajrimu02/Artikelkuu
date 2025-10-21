@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Beranda</title>
+    <link rel="icon" href="img/logo.png" type="image/png" sizes="32x32" />
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon" />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      html,
+      body {
+        min-height: 100vh;
+        overflow-y: auto;
+        background-color: #000;
+        color: #f5faff;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .logo img {
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+      }
+
+      header {
+        background: linear-gradient(90deg, #00b4d8, #000);
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+        box-shadow: 0 4px 20px rgba(0, 180, 216, 0.4);
+        flex-shrink: 0;
+        border-bottom: 2px solid #00b4d8;
+      }
+
+      header h1 {
+        font-size: 2rem;
+        letter-spacing: 1px;
+        text-shadow: 0 0 15px rgba(0, 180, 216, 0.8);
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: linear-gradient(90deg, #000814, #001d3d);
+        padding: 10px 40px;
+        flex-shrink: 0;
+        box-shadow: 0 4px 15px rgba(0, 180, 216, 0.3);
+        position: relative;
+      }
+
+      .nav-center {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 30px;
+      }
+
+      nav .menu a {
+        font-size: 22px;
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 900;
+        transition: 0.3s ease;
+      }
+
+      nav .menu a:hover {
+        color: #00b4d8;
+        text-shadow: 0 0 10px #48cae4, 0 0 20px #90e0ef;
+        transform: scale(1.15);
+      }
+
+      .auth-buttons {
+        display: flex;
+        gap: 10px;
+      }
+
+      .auth-buttons a {
+        padding: 8px 18px;
+        border-radius: 8px;
+        font-weight: 600;
+        border: 1px solid #00b4d8;
+        transition: all 0.3s ease;
+        color: #fff;
+        text-decoration: none;
+        background: #000;
+        box-shadow: 0 0 10px rgba(0, 180, 216, 0.3);
+      }
+
+      .auth-buttons a:hover {
+        background: linear-gradient(90deg, #00b4d8, #48cae4);
+        color: #000;
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(72, 202, 228, 0.7);
+      }
+
+      section {
+        flex: 1;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 25px;
+        padding: 20px 40px;
+      }
+
+      article {
+        background-color: #000;
+        border: 2px solid #00b4d8;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 0 25px rgba(0, 180, 216, 0.1);
+      }
+
+      article h2 {
+        color: #48cae4;
+        margin-bottom: 15px;
+        text-shadow: 0 0 10px rgba(72, 202, 228, 0.6);
+      }
+
+      .article-box {
+        display: flex;
+        align-items: center;
+        background: #0d0d0d;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 20px;
+        border: 1px solid rgba(72, 202, 228, 0.3);
+        transition: 0.3s;
+      }
+
+      .article-box:hover {
+        transform: scale(1.02);
+        box-shadow: 0 0 25px rgba(72, 202, 228, 0.6);
+      }
+
+      .article-box img {
+        width: 40%;
+        height: auto;
+        object-fit: cover;
+        filter: brightness(0.85);
+      }
+
+      .article-box.reverse {
+        flex-direction: row-reverse;
+      }
+
+      .article-content {
+        flex: 1;
+        padding: 20px;
+      }
+
+      .article-content h3 {
+        color: #00b4d8;
+        margin-bottom: 10px;
+        text-shadow: 0 0 8px rgba(72, 202, 228, 0.8);
+      }
+
+      .article-content p {
+        color: #f1f1f1;
+        line-height: 1.6;
+        text-align: justify;
+      }
+
+      aside {
+        background-color: #000;
+        border: 2px solid #00b4d8;
+        border-radius: 12px;
+        padding: 20px;
+        color: #fff;
+        box-shadow: 0 0 20px rgba(72, 202, 228, 0.15);
+      }
+
+      aside h3 {
+        color: #48cae4;
+        margin-bottom: 10px;
+        text-shadow: 0 0 8px rgba(72, 202, 228, 0.8);
+      }
+
+      aside ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      aside li {
+        padding: 8px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      aside a {
+        color: #fff;
+        text-decoration: none;
+        display: block;
+        transition: 0.3s;
+      }
+
+      aside a:hover {
+        color: #00b4d8;
+        text-shadow: 0 0 10px rgba(72, 202, 228, 0.7);
+      }
+
+      footer {
+        background: linear-gradient(90deg, #000, #001d3d);
+        color: #f8f8f8;
+        text-align: center;
+        padding: 20px;
+        font-size: 14px;
+        border-top: 2px solid #00b4d8;
+        flex-shrink: 0;
+        box-shadow: 0 -4px 15px rgba(72, 202, 228, 0.3);
+      }
+
+      @media (max-width: 768px) {
+        section {
+          grid-template-columns: 1fr;
+        }
+
+        .article-box {
+          flex-direction: column;
+        }
+
+        .article-box img {
+          width: 100%;
+        }
+
+        aside {
+          height: auto;
+        }
+
+        .nav-center {
+          position: static;
+          transform: none;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1><b>Selamat Datang di Website Saya</b></h1>
+    </header>
+
+    <nav>
+      <div class="logo">
+        <img src="img/logo.png" alt="Logo Saya" />
+      </div>
+
+      <div class="nav-center menu">
+        <a href="index.html">Beranda</a>
+        <a href="profil.html">Profil</a>
+        <a href="kontak.html">Kontak</a>
+      </div>
+
+      <div class="auth-buttons">
+        <a href="signin.html" class="signin">Sign in</a>
+        <a href="signup.html" class="signup">Sign up</a>
+      </div>
+    </nav>
+
+    <section>
+      <article>
+        <h2>Artikel Utama</h2>
+
+        <!-- Artikel Pertama -->
+        <div class="article-box">
+          <img src="img/unsur.jpg" alt="Kuliah Teknik Informatika" />
+          <div class="article-content">
+            <h3>Perjalanan Kuliah di Universitas Suryakancana</h3>
+            <p>
+              Saat ini saya menempuh pendidikan di
+              <b>Universitas Suryakancana</b>, jurusan
+              <b>Teknik Informatika</b>. Dunia teknologi menjadi hal yang sangat
+              menarik bagi saya — mulai dari pemrograman, desain web, hingga
+              kecerdasan buatan. Di kampus ini, saya belajar banyak hal tentang
+              logika, algoritma, serta bagaimana mengembangkan solusi digital
+              yang bisa membantu kehidupan sehari-hari. <br /><br />
+              Selain belajar teori, saya juga aktif mengikuti kegiatan praktikum
+              dan proyek kolaboratif yang mengasah kemampuan berpikir kreatif
+              dan kerja tim. Kuliah di Teknik Informatika mengajarkan saya untuk
+              terus beradaptasi dengan perkembangan teknologi yang begitu cepat.
+            </p>
+          </div>
+        </div>
+
+        <!-- Artikel Kedua -->
+        <div class="article-box reverse">
+          <img src="img/smk.jpg" alt="SMKN 1 Pagelaran" />
+          <div class="article-content">
+            <h3>Kenangan di SMKN 1 Pagelaran — Jurusan TKJ</h3>
+            <p>
+              Sebelum kuliah, saya bersekolah di <b>SMKN 1 Pagelaran</b> dan
+              mengambil jurusan <b>Teknik Komputer dan Jaringan (TKJ)</b>. Di
+              sanalah minat saya terhadap dunia teknologi mulai tumbuh. Saya
+              belajar mengenal perangkat keras komputer, jaringan LAN dan WAN,
+              serta cara instalasi sistem operasi. <br /><br />
+              Pengalaman belajar di TKJ memberikan pondasi kuat untuk perjalanan
+              saya di dunia IT. Banyak kenangan yang tidak terlupakan, mulai
+              dari praktikum, lomba jaringan, hingga kebersamaan dengan
+              teman-teman yang memiliki semangat serupa dalam belajar teknologi.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <aside>
+        <h3>Sidebar</h3>
+        <ul>
+          <li>
+            <a
+              href="https://www.detik.com/jateng/bisnis/d-8168082/blt-rp-900-ribu-cair-20-oktober-2025-ini-link-dan-cara-cek-nama-penerimanya"
+              target="_blank"
+              >Berita Terkini</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://koransakti.co.id/jadwal-lengkap-event-mlbb-september-2025-dari-sanrio-hingga-project-next/"
+              target="_blank"
+              >Event Kampus</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://kominfo.kuburaya.go.id/mengenal-5-teknologi-yang-akan-mengubah-dunia-di-tahun-2025"
+              target="_blank"
+              >Teknologi Terbaru</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://tekno.kompas.com/read/2025/10/18/09000077/kecerdasan-buatan-terbaru-bikin-revolusi-dunia-pendidikan"
+              target="_blank"
+              >AI di Dunia Pendidikan</a
+            >
+          </li>
+          <li>
+            <a href="https://www.cnnindonesia.com/teknologi" target="_blank"
+              >Berita Teknologi CNN</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.liputan6.com/tekno/read/5678901/tips-belajar-pemrograman-untuk-pemula"
+              target="_blank"
+              >Tips Belajar Pemrograman</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.coursera.org/articles/top-programming-languages"
+              target="_blank"
+              >Bahasa Pemrograman Populer</a
+            >
+          </li>
+          <li>
+            <a href="https://www.bisnis.com/tech" target="_blank"
+              >Berita Startup & IT Bisnis</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.dewaweb.com/blog/apa-itu-cyber-security/"
+              target="_blank"
+              >Keamanan Siber</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.teknozone.id/fakta-teknologi-unik/"
+              target="_blank"
+              >Fakta Unik Dunia Teknologi</a
+            >
+          </li>
+        </ul>
+      </aside>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 Pajri Muhamad.</p>
+    </footer>
+  </body>
+</html>

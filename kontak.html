@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Kontak</title>
+    <link rel="icon" href="img/logo.png" type="image/png" sizes="32x32" />
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #000, #0a0a0a 40%, #111);
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      /* ===== HEADER ===== */
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: linear-gradient(90deg, #00ffff, #000);
+        padding: 13px 40px;
+        box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .logo img {
+        width: 50px;
+        height: 50px;
+        border-radius: 10px;
+        object-fit: contain;
+      }
+
+      nav {
+        display: flex;
+        gap: 30px;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: #fff;
+        font-weight: 900;
+        font-size: 24px;
+        transition: 0.3s;
+      }
+
+      nav a:hover {
+        color: #00ffff;
+        transform: scale(1.1);
+        text-shadow: 0 0 8px #00ffff;
+      }
+
+      .auth-buttons {
+        display: flex;
+        gap: 10px;
+      }
+
+      .auth-buttons a {
+        padding: 8px 18px;
+        border-radius: 8px;
+        border: 1px solid #00ffff;
+        color: #00ffff;
+        text-decoration: none;
+        font-weight: 600;
+        transition: 0.3s;
+      }
+
+      .auth-buttons a:hover {
+        background: #00ffff;
+        color: #000;
+        box-shadow: 0 0 15px #00ffff;
+      }
+
+      /* ===== MAIN ===== */
+      main {
+        flex: 1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        padding: 40px 80px;
+        background: linear-gradient(180deg, #0a0a0a, #111, #000);
+      }
+
+      /* FORM KONTAK */
+      .contact-form {
+        background: linear-gradient(180deg, #0a0a0a, #101010);
+        border: 2px solid rgba(0, 255, 255, 0.3);
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+      }
+
+      .contact-form h2 {
+        font-size: 28px;
+        color: #00ffff;
+        margin-bottom: 10px;
+        text-shadow: 0 0 8px rgba(0, 255, 255, 0.6);
+      }
+
+      .contact-form p {
+        margin-bottom: 25px;
+        color: #ccc;
+      }
+
+      .contact-form label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+        color: #fff;
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        width: 100%;
+        background: #000;
+        border: 2px solid rgba(0, 255, 255, 0.3);
+        color: #fff;
+        padding: 12px 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        outline: none;
+        font-size: 15px;
+        transition: 0.3s;
+      }
+
+      .contact-form input:focus,
+      .contact-form textarea:focus {
+        border-color: #00ffff;
+        box-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+      }
+
+      .contact-form textarea {
+        height: 150px;
+        resize: none;
+      }
+
+      .contact-form button {
+        background: linear-gradient(90deg, #00ffff, #004d4d);
+        color: #000;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .contact-form button:hover {
+        background: #fff;
+        color: #000;
+        box-shadow: 0 0 20px #00ffff;
+        transform: scale(1.05);
+      }
+
+      /* INFO KONTAK */
+      .contact-info {
+        background: linear-gradient(180deg, #0a0a0a, #101010);
+        border: 2px solid rgba(0, 255, 255, 0.3);
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .contact-info h2 {
+        font-size: 28px;
+        color: #00ffff;
+        margin-bottom: 20px;
+        text-shadow: 0 0 8px rgba(0, 255, 255, 0.6);
+      }
+
+      .info-box {
+        margin-bottom: 25px;
+      }
+
+      .info-box h3 {
+        color: #00ffff;
+        font-size: 20px;
+        margin-bottom: 8px;
+        text-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
+      }
+
+      .info-box p {
+        color: #ccc;
+        margin-bottom: 10px;
+      }
+
+      iframe {
+        width: 100%;
+        height: 250px;
+        border: none;
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+      }
+
+      /* FOOTER */
+      footer {
+        background: linear-gradient(90deg, #000, #004d4d, #000);
+        color: #f8f8f8;
+        text-align: center;
+        padding: 20px;
+        font-size: 14px;
+        border-top: 2px solid #00ffff;
+        box-shadow: 0 -3px 10px rgba(0, 255, 255, 0.3);
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 900px) {
+        main {
+          grid-template-columns: 1fr;
+          padding: 30px;
+        }
+
+        nav {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header>
+      <div class="logo">
+        <img src="img/Logo kontak.png" alt="Logo Saya" />
+      </div>
+
+      <nav>
+        <a href="index.html">Beranda</a>
+        <a href="profil.html">Profil</a>
+        <a href="kontak.html">Kontak</a>
+      </nav>
+
+      <div class="auth-buttons">
+        <a href="signin.html" class="signin">Sign in</a>
+        <a href="signup.html" class="signup">Sign up</a>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+    <main>
+      <div class="contact-form">
+        <h2>Saran Dan Keritik</h2>
+        <p>
+          Silakan isi form di bawah ini untuk mengirim kritik dan saran Anda.
+        </p>
+
+        <form action="">
+          <label for="name">Nama</label>
+          <input type="text" id="name" placeholder="Nama Anda..." required />
+
+          <label for="phone">Nomor Telepon</label>
+          <input type="text" id="phone" placeholder="Nomor Anda..." required />
+
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Email Anda..." required />
+
+          <label for="message">Kritik & Saran</label>
+          <textarea
+            id="message"
+            placeholder="Tulis pesan atau saran Anda di sini..."
+            required
+          ></textarea>
+
+          <button type="submit">Kirim Pesan</button>
+        </form>
+      </div>
+
+      <div class="contact-info">
+        <div>
+          <h2>Hubungi Saya</h2>
+
+          <div class="info-box">
+            <h3><i class="fas fa-phone"></i> Nomor Telepon</h3>
+            <p>+62 878 7358 7900</p>
+          </div>
+
+          <div class="info-box">
+            <h3><i class="fas fa-envelope"></i> Email</h3>
+            <p>pajrimuhamad751@gmail.com</p>
+          </div>
+
+          <div class="info-box">
+            <h3><i class="fab fa-whatsapp"></i> WhatsApp</h3>
+            <p>+62 878 7358 7900</p>
+          </div>
+
+          <div class="info-box">
+            <h3><i class="fas fa-map-marker-alt"></i> Lokasi</h3>
+            <p>Perumahan samwa,Jebrod, Cianjur, Jawa Barat</p>
+          </div>
+        </div>
+
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d448.1036105234747!2d107.14197887018744!3d-6.846789764609296!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sid!2sid!4v1760918975787!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></src=></iframe>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Pajri Muhamad. </p>
+    </footer>
+  </body>
+</html>
